@@ -1,0 +1,29 @@
+name: Check GitHub Followers
+
+on:
+  schedule:
+    # Protidin UTC 06:00 e run hobe (Bangladesh time ~12:00 PM)
+    - cron: "0 6 * * *"
+  workflow_dispatch:   # Manual e o run korte parba "Run workflow" button diye
+
+jobs:
+  check-followers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run follower check script
+        env:
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+        run: python check_followers.py
