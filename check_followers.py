@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 
 # ---- CONFIG ----
 GITHUB_USERNAME = "Aksadio"   # <-- tomar GitHub username diye replace koro jodi change hoy
-FOLLOWER_THRESHOLD = 88
+FOLLOWER_THRESHOLD = 89
 
 # ---- Environment variables (GitHub Secrets theke ashbe) ----
 EMAIL_USERNAME = os.environ["EMAIL_USERNAME"]
